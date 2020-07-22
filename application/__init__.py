@@ -10,4 +10,6 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 app = Flask(__name__)
 
+bcrypt = Bcrypt(app)
+app.config['SECRET_KEY'] ="1245"
 from application import routes
