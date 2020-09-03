@@ -5,4 +5,4 @@ from application.forms import loginForm
 @app.route('/')
 def login():
     form=loginForm()
-    return render_template(login.html,  form=form)
+    return render_template("login.html", form=form)
