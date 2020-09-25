@@ -1,7 +1,7 @@
 
-{% block body_content %}
+{% extends "layout.html" %}
 
-{{title}}
+{% block body_content %}
 <div class='form'>
     <form method='POST' action=''>
         {{ form.hidden_tag() }}
@@ -38,3 +38,11 @@
     </form>
 </div>
 {% endblock %}
+
+
+<style>
+    .form {
+      background-color: #f4511e; /* Orange */
+      color: #ffffff;
+    }
+    </style>

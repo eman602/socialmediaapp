@@ -6,7 +6,7 @@ class Users(db.Model):
     username = db.Column(db.String(30), nullable=False)
     first_name = db.Column(db.String(50), nullable=False)
     second_name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(200), nullable=False)
+    email = db.C                                                             olumn(db.String(200), nullable=False)
     password = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
@@ -15,5 +15,7 @@ class Users(db.Model):
         ])
 
 
-
+@login_manager.user_loader
+def load_user(id):
+    return Users.query.get(int(id))
     
