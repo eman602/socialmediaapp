@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, PasswordField, BooleanField
-from wtforms.validators import DataRequired, Length, Optional, Email,  ValidationError
+from wtforms.validators import DataRequired, Length, Optional, Email,  ValidationError, EqualTo
 import email_validator
 
 class LoginForm(FlaskForm):
@@ -29,7 +29,7 @@ class RegistrationForm(FlaskForm):
             Length(min=2, max=30)
         ]
     )
-    last_name = StringField('Last Name',
+    second_name = StringField('Last Name',
         validators = [
             DataRequired(),
             Length(min=2, max=30)
@@ -55,10 +55,6 @@ class RegistrationForm(FlaskForm):
     )
     submit = SubmitField('Sign Up')
 
-    def validate_email(self, email):
-        user = Users.query.filter_by(email=email.data).first()
-
-        if user:
-            raise ValidationError('Email already in use')
+  
         
         

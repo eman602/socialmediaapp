@@ -4,7 +4,7 @@ from application.models import Users
 from application.forms import LoginForm, RegistrationForm
 from flask_login import login_user, current_user, logout_user, login_required
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -20,6 +20,10 @@ def login():
                 return redirect(url_for('home'))
     return render_template('login.html', title='Login', form=form)
 
+@app.route('/home')
+def home():
+    return render_template('welcome.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -29,7 +33,7 @@ def register():
     if form.validate_on_submit():
         hash_pw = bcrypt.generate_password_hash(form.password.data)
 
-        user = Users(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, password=hash_pw)
+        user = Users(first_name=form.first_name.data, second_name=form.second_name.data, email=form.email.data, password=hash_pw)
 	
         db.session.add(user)
         db.session.commit()
