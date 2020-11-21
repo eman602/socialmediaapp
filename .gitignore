@@ -1,3 +1,4 @@
 /pycashe/
 *.pyc
 /venv/
+/env/
